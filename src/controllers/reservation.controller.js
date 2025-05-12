@@ -45,7 +45,7 @@ const ReservationController = {
     await HistoryModel.registrarCambio({
       id_reserva: reserva.id,
       id_usuario: userId,
-      accion_realizada: 'Modificación'
+      accion_realizada: 'Cancelada'
     })
 
     res.json({ message: 'Reserva cancelada', reserva })
