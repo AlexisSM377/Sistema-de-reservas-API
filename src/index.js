@@ -1,6 +1,7 @@
 import express from 'express'
 import { PORT } from './config.js'
 import userRoutes from './routes/user.routes.js'
+import spaceRoutes from './routes/space.routes.js'
 import authRoutes from './routes/auth.routes.js'
 import morgan from 'morgan'
 import cors from 'cors'
@@ -12,6 +13,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/usuarios', userRoutes)
+app.use('/api/espacios', spaceRoutes)
 app.use('/api/auth', authRoutes)
 
 app.listen(PORT, () => {

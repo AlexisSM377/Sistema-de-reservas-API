@@ -1,0 +1,11 @@
+Password 
+
+Carlos Méndezs-Empleado
+passwordcarlos
+
+Arturo---Admin
+password123
+
+
+Laura--Empleado
+passwordlaura
