@@ -16,8 +16,9 @@ const AuthController = {
     const token = jwt.sign(
       {
         id: user.id,
+        nombre: user.nombre,
         email: user.email,
-        rol: user.id_rol // UUID o puedes unirte a tabla roles para enviar el nombre
+        rol: user.rol // ahora es "Administrador" o "Empleado"
       },
       JWT_SECRET,
       { expiresIn: '8h' }
@@ -30,7 +31,7 @@ const AuthController = {
       maxAge: 8 * 60 * 60 * 1000
     })
 
-    res.json({ message: 'Inicio de sesión exitoso', rol: user.id_rol })
+    res.json({ message: 'Inicio de sesión exitoso', rol: user.rol })
   },
 
   logout (req, res) {
@@ -39,7 +40,15 @@ const AuthController = {
   },
 
   me (req, res) {
-    res.json(req.user)
+    const user = req.user
+    if (!user) return res.status(401).json({ error: 'No autenticado' })
+
+    res.json({
+      id: user.id,
+      nombre: user.nombre,
+      email: user.email,
+      rol: user.rol // ahora es "Administrador" o "Empleado"
+    })
   }
 }
 

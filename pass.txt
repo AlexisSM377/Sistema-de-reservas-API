@@ -1,11 +1,14 @@
 Password 
 
 Carlos Méndezs-Empleado
+carlos@empresa.com
 passwordcarlos
 
 Arturo---Admin
+arturo@empresa.com
 password123
 
 
 Laura--Empleado
+laura@empresa.com
 passwordlaura

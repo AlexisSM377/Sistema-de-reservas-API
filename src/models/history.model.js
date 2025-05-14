@@ -7,7 +7,19 @@ const HistoryModel = {
   },
 
   async getByReserva (id_reserva) {
-    const res = await pool.query('SELECT * FROM historial_cambios WHERE id_reserva = $1 ORDER BY fecha_cambio DESC', [id_reserva])
+    const res = await pool.query(`
+    SELECT 
+      h.id,
+      h.id_reserva,
+      h.fecha_cambio,
+      h.accion_realizada,
+      u.nombre AS nombre_usuario
+    FROM historial_cambios h
+    JOIN usuarios u ON h.id_usuario = u.id
+    WHERE h.id_reserva = $1
+    ORDER BY h.fecha_cambio DESC
+  `, [id_reserva])
+
     return res.rows
   },
 

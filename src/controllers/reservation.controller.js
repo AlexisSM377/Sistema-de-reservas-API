@@ -7,6 +7,32 @@ const ReservationController = {
     res.json(reservations)
   },
 
+  async getByUser (req, res) {
+    try {
+      const reservas = await ReservationModel.findByUserId(req.user.id)
+      res.json(reservas)
+    } catch (error) {
+      console.error('Error al obtener reservas del usuario:', error)
+      res.status(500).json({ error: 'Error al obtener tus reservas' })
+    }
+  },
+
+  async getDisponibilidad (req, res) {
+    const { id_espacio, fecha } = req.query
+
+    if (!id_espacio || !fecha) {
+      return res.status(400).json({ error: 'Falta id_espacio o fecha en la consulta' })
+    }
+
+    try {
+      const bloques = await ReservationModel.findDisponibilidad(id_espacio, fecha)
+      res.json(bloques)
+    } catch (err) {
+      console.error('Error al obtener disponibilidad:', err)
+      res.status(500).json({ error: 'Error al consultar disponibilidad' })
+    }
+  },
+
   async getByFolio (req, res) {
     const reservation = await ReservationModel.getByFolio(req.params.folio)
     if (!reservation) return res.status(404).json({ error: 'Reserva no encontrada' })

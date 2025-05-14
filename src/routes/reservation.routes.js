@@ -8,9 +8,11 @@ import authorizeRoles from '../middlewares/role.middleware.js'
 const router = Router()
 
 router.get('/', ReservationController.getAll)
+router.get('/mis-reservas', authenticate, ReservationController.getByUser)
+router.get('/disponibilidad', authenticate, ReservationController.getDisponibilidad)
 router.get('/:folio', ReservationController.getByFolio)
 router.post('/', validate(createReservationSchema), ReservationController.create)
-router.put('/:id/estado', authenticate, validate(updateEstadoSchema), ReservationController.updateEstado)
-router.delete('/:id', authenticate, authorizeRoles(['8f3ecb9c-3aea-4a90-bc0a-4efa74be22d3']), ReservationController.cancelar)
+router.put('/:id/estado', authenticate, authorizeRoles(['Administrador']), validate(updateEstadoSchema), ReservationController.updateEstado)
+router.delete('/:id', authenticate, authorizeRoles(['Administrador']), ReservationController.cancelar)
 
 export default router
