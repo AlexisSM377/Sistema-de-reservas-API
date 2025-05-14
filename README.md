@@ -69,6 +69,20 @@ Usuario actual (GET /api/auth/me)
 
 Se usa JWT + cookies seguras
 
+## Usuarios autenticados
+- Administrador: puede ver todas las reservas y gestionar su estado.
+- Empleado: puede ver sus propias reservas y crear nuevas.
+- Login 
+Credenciales de prueba:
+  - Admin: 
+    - email: arturo@empresa.com
+    - password: password123
+  - Empleado: 
+    - email:laura@empresa.com
+    - password: passwordlaura
+
+
+
 --- 🧾 Rutas principales
 
 | Método   | Ruta                           | Descripción                             |
