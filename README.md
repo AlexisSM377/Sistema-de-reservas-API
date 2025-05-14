@@ -59,7 +59,7 @@ src/
    npm run dev
    ```
 
---- 🔐 Autenticación
+## 🔐 Autenticación
 
 Login (POST /api/auth/login)
 
@@ -82,7 +82,7 @@ Se usa JWT + cookies seguras
 | `GET`    | `/api/reservas/disponibilidad` | Ver disponibilidad por espacio y fecha  |
 | `GET`    | `/api/historial/:id_reserva`   | Ver historial de cambios de una reserva |
 
---- ✅ Funcionalidades destacadas
+## ✅ Funcionalidades destacadas
 
 Validación con Zod
 
