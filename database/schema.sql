@@ -51,5 +51,5 @@ CREATE TABLE historial_cambios (
     id_reserva UUID REFERENCES reserva(id),
     id_usuario UUID REFERENCES usuarios(id),
     fecha_cambio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    accion_realizada VARCHAR(20) CHECK (accion_realizada IN ('modificación', 'aprobación', 'rechazo'))
+    accion_realizada VARCHAR(20) CHECK (accion_realizada IN ('Pendiente', 'Aprobada', 'Rechazada', 'Cancelada'))
 );
